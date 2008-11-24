@@ -14,8 +14,10 @@ describe PostiesController do
       response.should be_success
     end
     it "should assign a new postie to the view" do
+      postie = Postie.new
+      Postie.stub!(:new).and_return(postie)
       get 'new'
-      assigns[:postie].should == Postie.new
+      assigns[:postie].should == postie
     end
   end
 
