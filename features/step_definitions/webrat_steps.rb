@@ -1,6 +1,9 @@
 # Commonly used webrat steps
 # http://github.com/brynary/webrat
 
+require 'erb'
+include ERB::Util
+
 When /^I press "(.*)"$/ do |button|
   clicks_button(button)
 end
@@ -34,7 +37,7 @@ When /^I attach the file at "(.*)" to "(.*)" $/ do |path, field|
 end
 
 Then /^I should see "(.*)"$/ do |text|
-  response.body.should =~ /#{text}/m
+  response.body.should =~ /#{Regexp.escape(h(text))}/m
 end
 
 Then /^I should not see "(.*)"$/ do |text|
