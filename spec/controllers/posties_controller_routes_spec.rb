@@ -26,7 +26,7 @@ describe PostiesController do
     end
 
     it "should generate params for #create" do
-      params_from(:put, "/").should == {:controller => "posties", :action => "create"}
+      params_from(:post, "/").should == {:controller => "posties", :action => "create"}
     end
 
     it "should generate params for #new" do

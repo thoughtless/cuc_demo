@@ -40,7 +40,7 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing the them or commenting them out if you're using named routes and resources.
   
   map.new_postie '/', :controller => 'posties', :action => 'new', :conditions => {:method => :get}
-  map.posties '/', :controller => 'posties', :action => 'create', :conditions => {:method => :put}
+  map.posties '/', :controller => 'posties', :action => 'create', :conditions => {:method => :post}
   map.postie '/:pretty_id', :controller => 'posties', :action => 'show', :conditions => {:method => :get}
   
   #map.resources :posties
