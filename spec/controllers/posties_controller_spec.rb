@@ -13,6 +13,10 @@ describe PostiesController do
       get 'new'
       response.should be_success
     end
+    it "should assign a new postie to the view" do
+      get 'new'
+      assigns[:postie].should == Postie.new
+    end
   end
 
   describe "GET 'create'" do
