@@ -10,7 +10,7 @@ class PostiesController < ApplicationController
   end
 
   def show
-    @postie = Postie.find(params[:id])
+    @postie = Postie.find_by_pretty_id(params[:pretty_id])
   end
 
 end

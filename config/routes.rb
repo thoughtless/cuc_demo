@@ -39,9 +39,12 @@ ActionController::Routing::Routes.draw do |map|
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
   
-  map.resources :posties
+  map.new_postie '/', :controller => 'posties', :action => 'new', :conditions => {:method => :get}
+  map.posties '/', :controller => 'posties', :action => 'create', :conditions => {:method => :put}
+  map.postie '/:pretty_id', :controller => 'posties', :action => 'show', :conditions => {:method => :get}
   
-  map.root :controller => 'posties', :action => 'new'
+  #map.resources :posties
+  
   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
