@@ -1,2 +1,5 @@
-<h1>Posties#show</h1>
-<p>Find me in app/views/posties/show.html.erb</p>
+<h1><%= h @postie.name %> </h1>
+
+<div>
+  <%= simple_format(h(@postie.body)) %>
+</div>

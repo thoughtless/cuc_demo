@@ -41,5 +41,11 @@ describe PostiesController do
       get 'show'
       response.should be_success
     end
+    it "should assign a the postie to the view" do
+      postie = mock_model(Postie)
+      Postie.stub!(:find).and_return(postie)
+      get 'show'
+      assigns[:postie].should == postie
+    end
   end
 end
