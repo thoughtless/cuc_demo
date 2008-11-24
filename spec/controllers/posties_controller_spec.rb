@@ -37,15 +37,18 @@ describe PostiesController do
   end
 
   describe "GET 'show'" do
+    before(:each) do
+      @postie = mock_model(Postie)
+      Postie.stub!(:find).and_return(@postie)
+    end
+    
     it "should be successful" do
-      get 'show'
+      get 'show', :id => @postie.id
       response.should be_success
     end
     it "should assign a the postie to the view" do
-      postie = mock_model(Postie)
-      Postie.stub!(:find).and_return(postie)
-      get 'show'
-      assigns[:postie].should == postie
+      get 'show', :id => @postie.id
+      assigns[:postie].should == @postie
     end
   end
 end
