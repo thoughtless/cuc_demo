@@ -21,10 +21,18 @@ describe PostiesController do
     end
   end
 
-  describe "GET 'create'" do
-    it "should be successful" do
-      get 'create'
-      response.should be_success
+  describe "POST 'create'" do
+    before :each do
+      @params = {:foo => 'bar'}
+    end
+    
+    describe "with valid attributes" do
+      it "should redirect to the show pastie page" do
+        postie = mock_model(Postie, :save => true)
+        Postie.should_receive(:new).and_return(postie)
+        post 'create', :postie => @params
+        response.should redirect_to(postie_path(postie))
+      end
     end
   end
 

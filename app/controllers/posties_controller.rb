@@ -4,6 +4,9 @@ class PostiesController < ApplicationController
   end
 
   def create
+    @postie = Postie.new(params[:postie])
+    @postie.save
+    redirect_to postie_path(@postie)
   end
 
   def show
