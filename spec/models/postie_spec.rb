@@ -19,5 +19,21 @@ describe Postie do
       
       Postie.find_by_pretty_id('mypostie').should == postie
     end
+    it "should raise an error when no name matches" do
+      postie = Postie.new(:name => 'My Postie')
+      postie.save!
+      
+      lambda{Postie.find_by_pretty_id('dontexist')}.should raise_error(ActiveRecord::RecordNotFound)
+    end
+  end
+  
+  it "should know its pretty_id" do
+    postie = Postie.new(:name => 'My Postie')
+    postie.pretty_id.should == 'mypostie'
+  end
+  
+  it "should use its pretty_id for params" do
+    postie = Postie.new(:name => 'My Postie')
+    postie.to_param.should == postie.pretty_id
   end
 end
