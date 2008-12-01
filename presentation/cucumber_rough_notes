@@ -1,0 +1,80 @@
+Presentation to Victoria Ruby Users Group on using Cucumber
+
+http://github.com/aslakhellesoy/cucumber/tree/master
+
+"Cucumber executes plain text documentation of code against that code."
+
+Common names for the practice
+- Story Driven Development
+- Executable Acceptance Test Driven Development
+
+
+
+Basic workflow
+- Write a "feature" with the customer
+  - The cucumber team discourages the work "story" because this is not the same thing as an XP Story
+- Implement "steps" that make the story executable
+- Write the code to make the stories pass
+
+
+
+What is a story:
+- 3 parts
+  - 1. Business Value
+    - Not executed
+    - It is there to get you (and the customer) into the right mind set
+    - Answers three questions
+      - What value does this feature provide (pop the 'why' stack)
+      - Who will use this
+      - What is the requested feature
+  - 2. Scenario Title
+    - Just a short description of how this feature is used in a particular scenario
+  - 3. The story
+    - This is actually executed
+    - A collection of Given, When, and Then statements
+    - Should read almost like English
+    - The customer should be able to write and understand these
+
+
+What do the step matchers look like?
+- Simple regex
+- I usually use "" to note where I will be matching things
+  - It makes the regex more precise (less chance of a bug)
+  - I can quickly see in my feature files what will be matched and what will be hard coded
+- You have the choice between
+  - always using the web UI
+  - direct db access (i.e. ActiveRecord objects)
+  - somewhere inbetween
+- The choice depends on what you are testing
+- I usually do web UI for what ever the 'point' of the story/feature is, but then ActiveRecord objects for the setup.
+  - For example, I might create the user with active record objects, but then log in with form
+
+
+Extra 'nice' things
+- More Examples
+  - Use the same steps, but with different values
+- GivenScenario
+  - Rerun the steps from previous scenarios
+  - Reference it using the Scenario Title
+  - It can clean things up quite a lot
+  - It does couple your scenarios somewhat
+  - I don't use this very often
+
+
+
+What else can you do (that I haven't done)
+- Hook it up to Selenium, watir, 
+- Respond to emails that you app sends
+  - For example, to click on an activation link in an email
+
+
+
+What cucumber is not
+- not a replacement for unit tests
+  - It helps do TDD at a higher level, but it would be too cumbersome to test every edge case
+- not dependent on RSpec
+- not dependent no Rails
+
+
+Resources
+- 
