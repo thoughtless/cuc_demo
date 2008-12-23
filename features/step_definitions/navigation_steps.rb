@@ -5,6 +5,6 @@ When /^I go to "(.*)"$/ do |page|
   else
     page
   end
-  visits url
+  visit url
 end
 
